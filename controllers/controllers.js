@@ -61,13 +61,13 @@ const createLanding = async (req, res) => {
     } catch (err) {
         res.status(400).json({ msg: `error ${err}` })
     }
-};
+}
 
 const editLanding = async (req, res) => {
     try {
         const { name, id, nametype, recclass, mass, fall, year, reclat, reclong, geolocation } = req.body;
         const update = req.body;
-        const filter = { id: id }
+        const filter = { id: id };
         let landingToEdit = await LandingsModel.findOneAndUpdate(filter, update, { new: true });
         res.status(201).json({ msg: `Landing ${filter.id} edited, saved data: ` + landingToEdit })
     } catch (err) {
