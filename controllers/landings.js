@@ -1,24 +1,12 @@
 // Requerimentos
 const res = require('express/lib/response')
 const LandingsModel = require('../modules/landingsModels')
-const NeasModel = require('../modules/neasModels')
 require('mongoose');
 
 
 // CONTROLADORES //
 
 // LANDINGS //
-
-const getLandingsByMinimumMass = async (req, res) => { // No funciona.
-    const {recclass, start_date: dateFrom, end_date: dateTo} = req.query;
-    const mass = parseInt(req.query.mass);
-
-    console.log("mass", mass);
-    const filter = { mass: {$gt: mass} }
-    const query = await LandingsModel.find(filter).exec();
-    console.log(mass, recclass, dateFrom, dateTo);
-    res.status(200).json({ msg: query })
-};
 
 const getLandingsByMass = async (req, res) => {
     try {
@@ -94,7 +82,6 @@ const deleteLanding = async (req, res) => {
 }
 
 const landings = {
-    getLandingsByMinimumMass,
     getLandingsByMass,
     getLandingsByClass,
     createLanding,
