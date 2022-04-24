@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers/controllers');
+const landings = require('../controllers/landings');
+const neas = require('../controllers/neas')
 
 router.get('/', (req, res) => {
     res.json({ msg: "Welcome to the Nasa API !!"})
 })
 
 // Rutas para los Landings
-router.get('/astronomy/landings?minimum_mass', controllers.getLandingsByMinimumMass); // No funciona.
-router.get('/astronomy/landings/mass/:mass', controllers.getLandingsByMass);
-router.get('/astronomy/landings/class/:class', controllers.getLandingsByClass);
+router.get('/astronomy/landings?minimum_mass', landings.getLandingsByMinimumMass); // No funciona.
+router.get('/astronomy/landings/mass/:mass', landings.getLandingsByMass);
+router.get('/astronomy/landings/class/:class', landings.getLandingsByClass);
 router.get('/astronomy/landings?from&to',); // No funciona.
-router.post('/astronomy/landings/create', controllers.createLanding);
-router.put('/astronomy/landings/edit', controllers.editLanding);
-router.delete('/astronomy/landings/delete', controllers.deleteLanding);
+router.post('/astronomy/landings/create', landings.createLanding);
+router.put('/astronomy/landings/edit', landings.editLanding);
+router.delete('/astronomy/landings/delete', landings.deleteLanding);
 
 // Ruta para los NEAs
 router.get('/astronomy/neas?',)
-router.post('/astronomy/neas/create', controllers.createNea)
-router.put('/astronomy/neas/edit/', controllers.editNea)
-router.delete('/astronomy/neas/delete', controllers.deleteNea)
+router.post('/astronomy/neas/create', neas.createNea)
+router.put('/astronomy/neas/edit/', neas.editNea)
+router.delete('/astronomy/neas/delete', neas.deleteNea)
 
 module.exports = router;
