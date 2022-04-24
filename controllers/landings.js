@@ -1,7 +1,6 @@
 // Requerimentos
 const res = require('express/lib/response')
 const LandingsModel = require('../modules/landingsModels')
-const NeasModel = require('../modules/neasModels')
 require('mongoose');
 
 
