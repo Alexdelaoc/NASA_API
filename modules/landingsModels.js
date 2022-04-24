@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const LandingsSchema = new mongoose.Schema({
+const LandingSchema = new mongoose.Schema({
     name: {
         type: String,
         required: false,
@@ -43,7 +43,7 @@ const LandingsSchema = new mongoose.Schema({
     },
     reclong: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     geolocation: {
@@ -54,6 +54,7 @@ const LandingsSchema = new mongoose.Schema({
 
 })
 
-const landingsModel = mongoose.model("landings", LandingsSchema);
+
+const landingsModel = mongoose.model("landings", LandingSchema)
 
 module.exports = landingsModel

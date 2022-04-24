@@ -1,8 +1,10 @@
 // Requerimentos
-const res = require('express/lib/response');
-const LandingsModel = require('../modules/landingsModels');
-const NeasModel = require('../modules/neasModels');
+const res = require('express/lib/response')
+const LandingsModel = require('../modules/landingsModels')
+const NeasModel = require('../modules/neasModels')
 require('mongoose');
+
+
 
 // Controladores
 
@@ -23,7 +25,7 @@ const getLandingsByMass = async (req, res) => {
         const filter = { mass: mass }
         const query = await LandingsModel.find(filter).exec();
         if (query == 0) {
-            res.status(200).json({ msg: "No landings for the mass provided" })
+            res.status(200).json({ msg: "No such landings for the mass provided." })
         } else {
             res.status(200).json(query)
         }
@@ -39,7 +41,7 @@ const getLandingsByClass = async (req, res) => {
         const filter = { recclass: recclass }
         const query = await LandingsModel.find(filter).exec();
         if (query == 0) {
-            res.status(200).json({ msg: "No landings for the class provided" })
+            res.status(200).json({ msg: "No such landings for the class provided." })
         } else {
             res.status(200).json(query)
         }
@@ -55,7 +57,7 @@ const createLanding = async (req, res) => {
         const newLanding = new LandingsModel(req.body);
         newLanding.save((err, newLanding) => {
             if (err) return console.error(err);
-            console.log(`${newLanding.name} saved in landings collection`)
+            console.log(`${newLanding.name} saved.`)
         })
         res.status(201).json({ msg: "createLanding" + req.body })
     } catch (err) {
@@ -69,10 +71,10 @@ const editLanding = async (req, res) => {
         const update = req.body;
         const filter = { id: id };
         let landingToEdit = await LandingsModel.findOneAndUpdate(filter, update, { new: true });
-        res.status(201).json({ msg: `Landing ${filter.id} edited, saved data: ` + landingToEdit })
+        res.status(201).json({ msg: `Landing with ID ${filter.id} edited and saved in the database: ` + landingToEdit })
     } catch (err) {
         console.log(err)
-        res.status(400).json({ msg: "Bad Request" })
+        res.status(400).json({ msg: "Bad Request." })
     }
 }
 
@@ -83,9 +85,69 @@ const deleteLanding = async (req, res) => {
         LandingsModel.deleteOne(filter, function (err) {
             if (err) return handleError(err);
         });
-        res.status(200).json({ msg: `landing with id: ${id} has been deleted` })
+        res.status(200).json({ msg: `Landing with id: ${id} deleted.` })
     } catch (err) {
         console.log(err)
+        res.status(400).json({ msg: "Bad Request." })
+    }
+}
+
+
+// NEAR EARTH OBJECTS (NEAs) CONTROLLERS.
+
+const createNea = async (req, res) => {
+    const { designation, discovery_date, h_mag, moid_au, q_au_1, q_au_2, period_yr, i_deg, pha, orbit_class, date } = req.body;
+    // Validación del body pasado por Postman.
+    try {
+        const newNea = new NeasModel(req.body);
+        newNea.save((err, newNea) => {
+            if (err) return console.error(err);
+            console.log(`${newNea.designation} saved in neas collection`)
+        })
+        res.status(201).json({ msg: "New Nea added: " + req.body })
+    } catch (err) {
+        res.status(400).json({ msg: `error ${err}` })
+    }
+
+}
+
+const editNea = async (req, res) => {
+    try {
+        const { _id } = req.body;
+        const filter = { id: _id };
+        const { designation, discovery_date, h_mag, moid_au, q_au_1, q_au_2, period_yr, i_deg, pha, orbit_class } = req.body;
+
+        const update =  {
+            designation: designation,
+            discovery_date: discovery_date,
+            h_mag: h_mag,
+            moid_au: moid_au,
+            q_au_1: q_au_1,
+            q_au_2: q_au_2,
+            period_yr: period_yr,
+            i_deg: i_deg,
+            pha: pha,
+            orbit_class: orbit_class
+        }
+
+        const doc = await NeasModel.findOneAndUpdate(filter, update, { new: false });
+        await doc.save();
+
+        res.status(201).json({ msg: `Neas` })
+    } catch (err) {
+        res.status(400).json({ msg: "Bad Request", err: err })
+    }
+}
+
+const deleteNea = async (req, res) => {
+    try {
+        const { designation } = req.body;
+        const filter = { designation: designation }
+        NeasModel.deleteOne(filter, function (err) {
+            if (err) return handleError(err);
+        });
+        res.status(200).json({ msg: `neas with designation: ${designation} has been deleted` })
+    } catch (err) {
         res.status(400).json({ msg: "Bad Request" })
     }
 }
@@ -97,7 +159,10 @@ const controllers = {
     getLandingsByClass,
     createLanding,
     editLanding,
-    deleteLanding
+    deleteLanding,
+    createNea,
+    editNea,
+    deleteNea
 }
 
 module.exports = controllers
