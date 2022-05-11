@@ -1,0 +1,31 @@
+{
+  "name": "nasa_api",
+  "version": "1.0.0",
+  "description": "API project for The Bridge School Full Stack Web Developer Bootcamp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexdelaoc/NASA_API.git"
+  },
+  "author": "Alejandro de la Orden Collado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexdelaoc/NASA_API/issues"
+  },
+  "homepage": "https://github.com/Alexdelaoc/NASA_API#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongodb": "^4.5.0",
+    "mongoimport": "^1.0.6",
+    "mongoose": "^6.3.0",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
