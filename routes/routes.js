@@ -8,19 +8,19 @@ router.get('/', (req, res) => {
 })
 
 // Rutas para los Landings
-router.get('/astronomy/landings', landings.getAllLandings);
-router.get('/astronomy/landings?minimum_mass', landings.getLandingsByMinimumMass); // No funciona.
-router.get('/astronomy/landings/mass/:mass', landings.getLandingsByMass);
-router.get('/astronomy/landings/class/:class', landings.getLandingsByClass);
-router.get('/astronomy/landings?from&to',); // No funciona.
-router.post('/astronomy/landings/create', landings.createLanding);
-router.put('/astronomy/landings/edit', landings.editLanding);
-router.delete('/astronomy/landings/delete', landings.deleteLanding);
+router.get('/api/astronomy/landings', landings.getAllLandings);
+router.get('/api/astronomy/landings?minimum_mass', landings.getLandingsByMinimumMass); // No funciona.
+router.get('/api/astronomy/landings/mass/:mass', landings.getLandingsByMass);
+router.get('/api/astronomy/landings/class/:class', landings.getLandingsByClass);
+router.get('/api/astronomy/landings?from&to',); // No funciona.
+router.post('/api/astronomy/landings/create', landings.createLanding);
+router.put('/api/astronomy/landings/edit', landings.editLanding);
+router.delete('/api/astronomy/landings/delete', landings.deleteLanding);
 
 // Ruta para los NEAs
-router.get('/astronomy/neas', neas.getAllNeas);
-router.post('/astronomy/neas/create', neas.createNea);
-router.put('/astronomy/neas/edit/', neas.editNea);
-router.delete('/astronomy/neas/delete', neas.deleteNea);
+router.get('/api/astronomy/neas', neas.getAllNeas);
+router.post('/api/astronomy/neas/create', neas.createNea);
+router.put('/api/astronomy/neas/edit/', neas.editNea);
+router.delete('/api/astronomy/neas/delete', neas.deleteNea);
 
 module.exports = router;

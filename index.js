@@ -5,7 +5,7 @@ require("dotenv").config();
 require('./config/mongoDbAtlas_connection');
 
 // Puerto a usar por la página:
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // Express:
 const express = require('express')
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
 // Ruta raíz de la API:
-app.use('/api', router);
+app.use('/', router);
 
 // Función para probar la conexión a la base de datos antes de iniciar el servidor:
 app.listen(port, () => { console.log(`App listening on port ${port}`) })
