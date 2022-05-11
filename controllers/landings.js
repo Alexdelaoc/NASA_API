@@ -1,4 +1,4 @@
-// Requerimentos
+// REQUERIMENTOS
 const res = require('express/lib/response')
 const LandingsModel = require('../modules/landingsModels')
 require('mongoose');
@@ -8,12 +8,22 @@ require('mongoose');
 
 // LANDINGS //
 
+const getAllLandings = async (req, res) => {
+    let data;
+    try {
+        data = await LandingsModel.find({}, "-_id");
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(400).json({ error: error });
+    }
+};
+
 const getLandingsByMinimumMass = async (req, res) => { // No funciona.
-    const {recclass, start_date: dateFrom, end_date: dateTo} = req.query;
+    const { recclass, start_date: dateFrom, end_date: dateTo } = req.query;
     const mass = parseInt(req.query.mass);
 
     console.log("mass", mass);
-    const filter = { mass: {$gt: mass} }
+    const filter = { mass: { $gt: mass } }
     const query = await LandingsModel.find(filter).exec();
     console.log(mass, recclass, dateFrom, dateTo);
     res.status(200).json({ msg: query })
@@ -63,7 +73,7 @@ const createLanding = async (req, res) => {
     } catch (err) {
         res.status(400).json({ msg: `error ${err}` })
     }
-}
+};
 
 const editLanding = async (req, res) => {
     try {
@@ -76,7 +86,7 @@ const editLanding = async (req, res) => {
         console.log(err)
         res.status(400).json({ msg: "Bad Request." })
     }
-}
+};
 
 const deleteLanding = async (req, res) => {
     try {
@@ -90,9 +100,10 @@ const deleteLanding = async (req, res) => {
         console.log(err)
         res.status(400).json({ msg: "Bad Request." })
     }
-}
+};
 
 const landings = {
+    getAllLandings,
     getLandingsByMinimumMass,
     getLandingsByMass,
     getLandingsByClass,
