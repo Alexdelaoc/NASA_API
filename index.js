@@ -22,6 +22,4 @@ app.use(express.urlencoded({ extended : true }));
 app.use('/', router);
 
 // Función para probar la conexión a la base de datos antes de iniciar el servidor:
-const server = app.listen(port, () => { console.log(`App listening on port ${port}`) })
-
-module.exports = server
+app.listen(port, () => { console.log(`App listening on port ${port}`) })
