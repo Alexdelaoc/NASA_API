@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "nodemon",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
@@ -24,9 +24,7 @@
     "express": "^4.17.3",
     "mongodb": "^4.5.0",
     "mongoose": "^6.3.0",
-    "node-fetch": "^2.6.7"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.16"
   }
 }
