@@ -8,17 +8,18 @@ require('./config/mongoDbAtlas_connection');
 const port = process.env.PORT || 5000;
 
 // Express:
-const express = require('express')
-const app = express()
+const express = require('express');
+const path = require('path');
+const app = express();
 
-const cors = require('cors')
-app.use(cors({origin: 'http://localhost:3000'}))
+const cors = require('cors');
+app.use(cors());
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Enrutador:
-const router = require('./routes/routes')
+const router = require('./routes/routes');
 
 // Usos para la aplicación:
 app.use(express.json());
@@ -28,4 +29,4 @@ app.use(express.urlencoded({ extended : true }));
 app.use('/', router);
 
 // Función para probar la conexión a la base de datos antes de iniciar el servidor:
-app.listen(port, () => { console.log(`App listening on port ${port}`) })
+app.listen(port, () => { console.log(`App listening on port ${port}`) });
