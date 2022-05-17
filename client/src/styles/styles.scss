@@ -1,0 +1,8 @@
+// General styles of root (app)
+@import './views/app';
+
+// Component styles
+@import './components/Header/nav';
+@import './components/Main/welcome';
+@import './components/Main/_landings.scss';
+@import './components/Main/neas'

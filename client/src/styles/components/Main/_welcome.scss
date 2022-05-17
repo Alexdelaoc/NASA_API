@@ -1,0 +1,30 @@
+.welcome {
+    height: 100%;
+
+    &__picture {
+        width: 98vw;
+
+    } &__container{
+        padding-top: 5px;
+
+    } &__container > p {
+        color: #0E161B;
+        background-color: #CFD7DE;
+        padding: 10px;
+        margin: 4vw;
+        border-width: 1px;
+        border-radius: 5px;
+        &:hover{
+            background-color: #B6C3CD;
+            transition: all 0.3s ease-in-out;
+        }
+
+    } &__container > h5 {
+        color: #212D30;
+        margin: 10px 0;
+
+    } &__container > h6 {
+        color: #212D30;
+        margin-bottom: 10px;
+    }
+}

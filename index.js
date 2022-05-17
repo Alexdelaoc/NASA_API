@@ -5,11 +5,17 @@ require("dotenv").config();
 require('./config/mongoDbAtlas_connection');
 
 // Puerto a usar por la página:
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // Express:
 const express = require('express')
-const app = express();
+const app = express()
+
+const cors = require('cors')
+app.use(cors({origin: 'http://localhost:3000'}))
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Enrutador:
 const router = require('./routes/routes')

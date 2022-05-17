@@ -29,6 +29,22 @@ const getLandingsByMinimumMass = async (req, res) => { // No funciona.
     res.status(200).json({ msg: query })
 };
 
+const getLandingsByName = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const filter = { name: name }
+        const query = await LandingsModel.find(filter).exec();
+        if (query == 0) {
+            res.status(200).json({ msg: "No such landings for the name provided." })
+        } else {
+            res.status(200).json(query)
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(400)
+    }
+};
+
 const getLandingsByMass = async (req, res) => {
     try {
         const mass = parseInt(req.params.mass)
@@ -105,6 +121,7 @@ const deleteLanding = async (req, res) => {
 const landings = {
     getAllLandings,
     getLandingsByMinimumMass,
+    getLandingsByName,
     getLandingsByMass,
     getLandingsByClass,
     createLanding,

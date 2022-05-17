@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 // Rutas para los Landings
 router.get('/api/astronomy/landings', landings.getAllLandings);
 /* router.get('/api/astronomy/landings?minimum_mass', landings.getLandingsByMinimumMass); // No funciona. */
+router.get('/api/astronomy/landings/name/:name', landings.getLandingsByName);
 router.get('/api/astronomy/landings/mass/:mass', landings.getLandingsByMass);
 router.get('/api/astronomy/landings/class/:class', landings.getLandingsByClass);
 /* router.get('/api/astronomy/landings?from&to',); // No funciona. */

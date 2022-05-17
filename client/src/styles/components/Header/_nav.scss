@@ -1,0 +1,10 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    &__element {
+        text-decoration: none;
+        color: #C9E0F8;
+    }
+}
