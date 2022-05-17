@@ -9,11 +9,9 @@ const neas = require('../controllers/neas');
 
 // Rutas para los Landings
 router.get('/astronomy/landings/', landings.getAllLandings);
-/* router.get('/api/astronomy/landings?minimum_mass', landings.getLandingsByMinimumMass); // No funciona. */
 router.get('/astronomy/landings/name/:name', landings.getLandingsByName);
 router.get('/astronomy/landings/mass/:mass', landings.getLandingsByMass);
 router.get('/astronomy/landings/class/:class', landings.getLandingsByClass);
-/* router.get('/api/astronomy/landings?from&to',); // No funciona. */
 router.post('/astronomy/landings/create', landings.createLanding);
 router.put('/astronomy/landings/edit', landings.editLanding);
 router.delete('/astronomy/landings/delete', landings.deleteLanding);

@@ -18,17 +18,6 @@ const getAllLandings = async (req, res) => {
     }
 };
 
-const getLandingsByMinimumMass = async (req, res) => { // No funciona.
-    const { recclass, start_date: dateFrom, end_date: dateTo } = req.query;
-    const mass = parseInt(req.query.mass);
-
-    console.log("mass", mass);
-    const filter = { mass: { $gt: mass } }
-    const query = await LandingsModel.find(filter).exec();
-    console.log(mass, recclass, dateFrom, dateTo);
-    res.status(200).json({ msg: query })
-};
-
 const getLandingsByName = async (req, res) => {
     try {
         const name = req.params.name;

@@ -18,7 +18,7 @@ const getAllNeas = async (req, res) => {
 
 const createNea = async (req, res) => {
     const { designation, discovery_date, h_mag, moid_au, q_au_1, q_au_2, period_yr, i_deg, pha, orbit_class, date } = req.body;
-    
+
     try {
         const newNea = new NeasModel(req.body);
         newNea.save((err, newNea) => {
@@ -38,7 +38,7 @@ const editNea = async (req, res) => {
         const filter = { id: _id };
         const { designation, discovery_date, h_mag, moid_au, q_au_1, q_au_2, period_yr, i_deg, pha, orbit_class } = req.body;
 
-        const update =  {
+        const update = {
             designation: designation,
             discovery_date: discovery_date,
             h_mag: h_mag,
