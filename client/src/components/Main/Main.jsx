@@ -11,11 +11,10 @@ function Main() {
       <Routes>
         <Route element={<Welcome />} path="/"/>
         <Route element={<Landings />} path="/landings"/>
-        <Route element={<Neas />} path="/neas"></Route>
+        <Route element={<Neas />} path="/neas"/>
         <Route element={<Cart />} path="/cart"/>
       </Routes>
     </main>
-
   )
 }
 
