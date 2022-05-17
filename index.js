@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 
 // Ruta raíz de la API:
-app.use('/', router);
+app.use('/api', router);
 
 // Función para probar la conexión a la base de datos antes de iniciar el servidor:
 app.listen(port, () => { console.log(`App listening on port ${port}`) });
