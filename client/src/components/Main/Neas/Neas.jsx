@@ -15,7 +15,7 @@ const Neas = () => {
   // eslint-disable-next-line
   const [query, setQuery] = useState("neas");
   // eslint-disable-next-line
-  const { loading, result } = useFetch(url + query);
+  const { loading, result } = useFetch("/api/astronomy/" + query);
 
   return (
     <section className="neas">
