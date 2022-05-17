@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <Auth0Provider domain='dev-175oymeo.us.auth0.com' clientId='LuPqctIRVc2rBxCm2Eb5va5pkBqSiIon' redirectUri={window.location.origin}>
