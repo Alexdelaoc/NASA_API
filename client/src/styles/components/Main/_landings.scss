@@ -2,17 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    & > h6 {
-        margin: 2vh 0;
-        
-    } &__list {
+    &__list {
         display: flex;
         justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
         margin: 2vh 5vw;
-    } & > h4 {
+    } & > h5 {
         margin: 12px 0;
 
     } &__form {
@@ -27,8 +24,46 @@
 }
 
 #map {
+    margin-bottom: 1.5vh;
     height: 40vh;
     width: 100vw;
-    max-width: 900px;
+    max-width: 800px;
     align-self: center;
 }
+
+/* @media screen and (min-width:1000px){
+    .landings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__map-container{
+            display: flex;
+            flex-direction: row;
+        } &__list {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 2vh 5vw;
+        } & > h5 {
+            margin: 12px 0;
+    
+        } &__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            & > div {
+                margin:5px 0;
+            }
+      }
+    }
+    
+    #map {
+        margin-bottom: 1.5vh;
+        height: 40vh;
+        width: 40vw;
+        align-self: center;
+    }
+} */

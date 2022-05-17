@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    & > h6 {
-        margin: 2vh 0;
+    & > h4 {
+        margin: 2vh 5vw;
         
     } &__list {
         display: flex;
@@ -12,8 +12,5 @@
         flex-wrap: wrap;
         align-items: center;
         margin: 2vh 5vw;
-    } & > h5 {
-        margin: 12px 0;
-
     }
   }

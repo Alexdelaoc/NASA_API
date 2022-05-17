@@ -9,6 +9,7 @@ import * as L from 'leaflet';
 
 // Material UI
 import { TextField, Button, Typography } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 
 // .env
 const url = process.env.REACT_APP_API;
@@ -72,67 +73,71 @@ const Landings = () => {
 
   return (
     <section className="landings">
-      <Typography variant="h4">Landings</Typography>
+      {loading
+        ? <CircularProgress className="loading__spinner" />
+        : <>
+          <Typography variant="h5">Landings</Typography>
 
-      <section className="landings__map-container">
-        <MapContainer
-          id="map"
-          center={[51.505, -0.09]}
-          zoom={2}
-          scrollWheelZoom={true}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            id="mapbox/satellite-v9"
-          />
-          {loading
-            ? <Marker position={[51.505, -0.09]}>
-            </Marker>
-            : paintMarkers()}
-        </MapContainer>
+          <section className="landings__map-container">
+            <MapContainer
+              id="map"
+              center={[51.505, -0.09]}
+              zoom={2}
+              scrollWheelZoom={true}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                id="mapbox/satellite-v9"
+              />
+              {loading
+                ? <Marker position={[51.505, -0.09]}>
+                </Marker>
+                : paintMarkers()}
+            </MapContainer>
 
-        
-        <Typography variant="h6">Looking for a landing?</Typography>
-        <form onSubmit={handleSubmit} className="landings__form">
-          <TextField
-            className="landings__form-field"
-            id="1"
-            label="Name of the landing."
-            variant="outlined"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value)
-              setClassL("")
-              setMass("")
-            }}></TextField>
-          <TextField
-            className="landings__form-field"
-            id="2"
-            label="Class of the landing."
-            variant="outlined"
-            value={classL}
-            onChange={(e) => {
-              setClassL(e.target.value)
-              setName("")
-              setMass("")
-            }}></TextField>
-          <TextField
-            className="landings__form-field"
-            id="3"
-            label="Mass of the landing."
-            variant="outlined"
-            value={mass}
-            onChange={(e) => {
-              setMass(e.target.value)
-              setName("")
-              setClassL("")
-            }}></TextField>
-          <Button type="submit" sx={{ display: "none" }}></Button>
-        </form>
-      </section>
+            <Typography variant="h6">Looking for a landing?</Typography>
+            <form onSubmit={handleSubmit} className="landings__form">
+              <TextField
+                className="landings__form-field"
+                id="1"
+                label="Name of the landing."
+                variant="outlined"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value)
+                  setClassL("")
+                  setMass("")
+                }}></TextField>
+              <TextField
+                className="landings__form-field"
+                id="2"
+                label="Class of the landing."
+                variant="outlined"
+                value={classL}
+                onChange={(e) => {
+                  setClassL(e.target.value)
+                  setName("")
+                  setMass("")
+                }}></TextField>
+              <TextField
+                className="landings__form-field"
+                id="3"
+                label="Mass of the landing."
+                variant="outlined"
+                value={mass}
+                onChange={(e) => {
+                  setMass(e.target.value)
+                  setName("")
+                  setClassL("")
+                }}></TextField>
+              <Button type="submit" sx={{ display: "none" }}></Button>
+            </form>
+          </section>
 
-      <LandingsList data={result} setChildResult={setChildResult} />
+          <LandingsList data={result} setChildResult={setChildResult} />
 
+        </>
+      }
     </section>
   )
 };

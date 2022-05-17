@@ -50,16 +50,14 @@ function Header() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 
-          <Link to="/" className="nav__element">
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, textDecoration: "none" }}
+              sx={{ color: "#C9E0F8", mr: 2, display: { xs: 'none', md: 'flex' }, textDecoration: "none" }}
             >
               NASA APP
-            </Typography>
-          </Link>
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
@@ -93,6 +91,13 @@ function Header() {
               }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/" style={{ color: "#2C414E", textDecoration: "none" }}>
+                  <Typography textAlign="center">
+                    Astronomy Picture Of the Day
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/landings" style={{ color: "#2C414E", textDecoration: "none" }}>
                   <Typography textAlign="center">
                     Landings
@@ -120,6 +125,7 @@ function Header() {
 
           </Box>
 
+
           <Typography
             className="nav__element"
             variant="h6"
@@ -132,6 +138,13 @@ function Header() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
 
+            <MenuItem onClick={handleCloseNavMenu}>
+              <Link to="/" className="nav__element">
+                <Typography textAlign="center">
+                  Astronomy Picture Of the Day
+                </Typography>
+              </Link>
+            </MenuItem>
             <MenuItem onClick={handleCloseNavMenu}>
               <Link to="/landings" className="nav__element">
                 <Typography textAlign="center">

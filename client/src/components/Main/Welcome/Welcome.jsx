@@ -3,6 +3,8 @@ import useFetch from "../../../hooks/useFetch";
 
 // Material UI
 import { Typography } from "@mui/material";
+import { Card, CardActionArea, CardMedia, CardContent } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const apodUrl = process.env.REACT_APP_APOD_URL;
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -17,15 +19,26 @@ const Welcome = () => {
   return (
     <main className="welcome">
       { loading 
-      ? <p>Loading...</p> 
-      : 
-      <section className="welcome__container">
-        <Typography variant="h5" className="welcome__container-title">Welcome to the NASA app!</Typography>
-        <Typography variant="subtitle1" className="welcome__container-subtitle">Here's the picture of the day</Typography>
-        <img src={picture} className="welcome__picture" alt="apod"/>
-        <Typography variant="body1">{explanation}</Typography>
-      </section> }
-      
+      ? <CircularProgress className="loading__spinner"/> 
+      :  <Card >
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="500"
+          image={picture}
+          alt={result.title}
+        />
+        <CardContent style={{backgroundColor:"#F3F5F7"}}>
+          <Typography gutterBottom variant="h5" component="div">
+            {result.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {explanation}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+      }
     </main>
   );
 }
