@@ -19,9 +19,9 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Handles any requests that don't match the ones above
-/* app.get('*', (req, res) =>{
+app.get('*', (req, res) =>{
     res.sendFile(path.join(__dirname+'/client/build/index.html'));
-}); */
+});
 
 // Enrutador:
 const router = require('./routes/routes');
