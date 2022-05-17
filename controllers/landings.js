@@ -109,7 +109,6 @@ const deleteLanding = async (req, res) => {
 
 const landings = {
     getAllLandings,
-    getLandingsByMinimumMass,
     getLandingsByName,
     getLandingsByMass,
     getLandingsByClass,
