@@ -20,7 +20,7 @@ const Welcome = () => {
     <main className="welcome">
       { loading 
       ? <CircularProgress className="loading__spinner"/> 
-      :  <Card >
+      :  <Card sx={{"borderRadius":0}}>
       <CardActionArea>
         <CardMedia
           component="img"

@@ -18,7 +18,7 @@ const Landings = () => {
 
   const [query, setQuery] = useState("landings");
   const [currentResult, setCurrentResult] = useState([]); // Sets Items from the API per page
-  const { loading, result } = useFetch("/api/astronomy/" + query); // Gets data from the API
+  const { loading, result } = useFetch(url + query); // Gets data from the API
   const [name, setName] = useState("");
   const [classL, setClassL] = useState("");
   const [mass, setMass] = useState("");
